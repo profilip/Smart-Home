@@ -1,0 +1,110 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "/home/filip/Smart Home Web/main/esp-arduino-pio/include",
+                "/home/filip/Smart Home Web/main/esp-arduino-pio/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/tinyusb",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/api/deprecated",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/api/deprecated-avr-comp",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/variants/UNOWIFIR4",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/AnalogWave",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_CAN/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_FreeRTOS/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_LED_Matrix/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/BlockDevices",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/EEPROM/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/FATFilesystem",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/HID",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/I2S",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/LittleFilesystem",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/OPAMP/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/OTAUpdate/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Preferences/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/RTC/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SDU/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SPI",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SoftwareATSE/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SoftwareSerial/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Storage",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/WDT/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/WiFiS3/src",
+                "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Wire",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/filip/Smart Home Web/main/esp-arduino-pio/include",
+                    "/home/filip/Smart Home Web/main/esp-arduino-pio/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/tinyusb",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/api/deprecated",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/cores/arduino/api/deprecated-avr-comp",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/variants/UNOWIFIR4",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/AnalogWave",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_CAN/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_FreeRTOS/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Arduino_LED_Matrix/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/BlockDevices",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/EEPROM/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/FATFilesystem",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/HID",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/I2S",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/LittleFilesystem",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/OPAMP/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/OTAUpdate/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Preferences/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/RTC/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SDU/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SPI",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SoftwareATSE/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/SoftwareSerial/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Storage",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/WDT/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/WiFiS3/src",
+                    "/home/filip/.platformio/packages/framework-arduinorenesas-uno/libraries/Wire",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60119",
+                "ARDUINO_UNOWIFIR4",
+                "ARDUINO_ARCH_RENESAS_UNO",
+                "ARDUINO_UNOR4_WIFI",
+                "NO_USB",
+                "BACKTRACE_SUPPORT",
+                "LWIP_DNS=1",
+                "CFG_TUSB_MCU=OPT_MCU_RAXXX",
+                "_RA_CORE=CM4",
+                "_RENESAS_RA_",
+                "ARDUINO=10810",
+                "ARDUINO_ARCH_RENESAS",
+                "ARDUINO_FSP",
+                "_XOPEN_SOURCE=700",
+                "F_CPU=48000000L",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++17",
+            "compilerPath": "/home/filip/.platformio/packages/toolchain-gccarmnoneeabi/bin/arm-none-eabi-gcc",
+            "compilerArgs": [
+                "-mcpu=cortex-m4",
+                "-mfloat-abi=hard",
+                "-mfpu=fpv4-sp-d16",
+                "-mthumb",
+                "-iprefix/home/filip/.platformio/packages/framework-arduinorenesas-uno",
+                "@/home/filip/.platformio/packages/framework-arduinorenesas-uno/variants/UNOWIFIR4/includes.txt",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
