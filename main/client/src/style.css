@@ -1,0 +1,349 @@
+h2{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+p{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#led{
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+
+    height: 250px;
+    width: 400px;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+#led-h2{
+    margin: 0;
+    text-align: center;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: white;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.5rem;
+}
+
+#light1{
+    display: flex;
+
+    position: absolute;
+    left: 15px;
+    top: 15px;
+
+    width: 55px;
+    height: 55px;
+
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font: inherit;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+.color-picker input[type="color"] {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+
+    position: absolute;
+    right: 1890px;
+    top: 10px;
+}
+
+#slider {
+    position: absolute;
+    left: 10px;
+    top: 85px;
+
+    width: 370px;
+    height: 30px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px) saturate(150%);
+    box-shadow: 1 1px 4px black;
+    border-radius: 999px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+
+#slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 0px;
+    height: 0px;
+
+    background: white;
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+}
+
+#slider::-moz-range-thumb {
+    width: 0px;
+    height: 0px;
+
+    background: white;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+}
+
+.color-picker input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-picker input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 12px;
+}
+
+#light1 img {
+    width: 45px;
+    height: 45px;
+}
+
+body{
+    display: flex;
+    background-image: url(housepci.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 100vh;
+}
+
+#presets{
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    left: 15px;
+    top: 130px;
+
+    gap: 10px;
+}
+
+#effects{
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    left: 15px;
+    top: 190px;
+
+    gap: 10px;
+}
+
+.pres-button{
+    height: 40px;
+    width: 80px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px) saturate(150%);
+    box-shadow: 1 1px 4px black;
+    border-radius: 999px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+}
+
+#fan{
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(150%);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+
+    height: 250px;
+    width: 400px;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+
+    margin-left: 12px;
+}
+
+#fan-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 65px;
+    height: 65px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+#fan-button-image {
+    background: transparent;
+    width: 45px;
+    height: 45px;
+}
+
+#fan-h2{
+    text-align: center;
+    margin: 0;
+}
+
+#temp-text{
+    font-size: 20px;
+    margin: 0;
+}
+
+#temp-box{
+    position: absolute; 
+    bottom: 15px;
+    right: 15px;
+
+    width: 75px;
+    height: 75px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#fan-button.on {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Optional hover */
+#fan-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#fan-button.on:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#auto-text{
+    font-size: 20px;
+    margin: 0;
+}
+
+#auto-button {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+
+    width: 75px;
+    height: 75px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+#auto-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#auto-button.on {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+#auto-button.on:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+#fan-slider {
+    position: absolute;
+    left: 10px;
+    top: 85px;
+
+    width: 370px;
+    height: 30px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px) saturate(150%);
+    box-shadow: 1 1px 4px black;
+    border-radius: 999px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+}
+
+#fan-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 0px;
+    height: 0px;
+
+    background: white;
+    border-radius: 50%;
+    border: none;
+
+    cursor: pointer;
+}
+
+#fan-slider::-moz-range-thumb {
+    width: 0px;
+    height: 0px;
+
+    background: white;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+}

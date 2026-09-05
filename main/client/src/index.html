@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Smart Home</title>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <div id="led">
+            <h2 id="led-h2">Led Strip</h2>
+            <button id="light1" type="button" aria-pressed="false">
+                <img src="lightbulb.png" alt="">
+            </button>
+
+            <input type="range" max="100" min="0" id="slider" value="50">
+
+            <label class="color-picker" for="led-color">
+                <input id="led-color" type="color" value="#ffd000">
+            </label>
+
+            <div id="presets">
+                <button id="warm-pres" class="pres-button">Warm</button>
+                <button id="cool-pres" class="pres-button">Cool</button>
+                <button id="night-pres" class="pres-button">Night</button>
+                <button id="party-pres" class="pres-button">Party</button>
+            </div>
+
+            <div id="effects">
+                <button id="static" class="pres-button">Static</button>
+                <button id="breathing" class="pres-button">Breathing</button>
+                <button id="cycle" class="pres-button">Cycle</button>
+                <button id="music" class="pres-button">Music</button>
+            </div>
+
+        </div>
+
+        <div id="fan">
+            <h2 id="fan-h2">Desk Fan</h2>
+
+            <button id="fan-button">
+                <img src="fan-img.png" id="fan-button-image">
+            </button>
+
+            <div id="temp-box">
+                 <p id="temp-text">Temp: <span id="temperature">0</span>°C</p>
+            </div>
+
+            <button id="auto-button">
+                <div id="auto-box">
+                    <p id="auto-text">Auto</p>
+                </div>
+            </button>
+
+            <input type="range" max="100" min="0" id="fan-slider" value="50"> 
+        </div>
+
+        <script src="function.js"></script>
+    </body>
+</html> 
