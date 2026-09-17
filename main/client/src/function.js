@@ -18,6 +18,12 @@ fanButton.addEventListener("click", function(){
     console.log("Sent toggle message to server");
 });
 
+light1.addEventListener("click", function() {
+    light1.classList.toggle("on");
+    socket.send("toggle-light");
+    console.log("Sent toggle-light message to server");
+});
+
 fanslider.addEventListener("input", function() {
     const value = fanslider.value;
     socket.send("fan-speed:" + value);
