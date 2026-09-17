@@ -30,26 +30,40 @@ p{
 .color-picker {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    justify-content: center;
     color: white;
     position: absolute;
-    top: 1.25rem;
-    right: 1.5rem;
+    top: 15px;
+    right: 15px;
+
+    width: 55px;
+    height: 55px;
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.color-picker:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .color-picker input[type="color"] {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
     padding: 0;
     border: 2px solid rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
     overflow: hidden;
-
-    position: absolute;
-    right: 1890px;
-    top: 10px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 #slider {
@@ -103,7 +117,12 @@ p{
 
 .color-picker input[type="color"]::-webkit-color-swatch {
     border: 0;
-    border-radius: 12px;
+    border-radius: 50%;
+}
+
+.color-picker input[type="color"]::-moz-color-swatch {
+    border: 0;
+    border-radius: 50%;
 }
 
 #light1 img {
@@ -120,28 +139,6 @@ body{
     min-height: 100vh;
 }
 
-#presets{
-    display: flex;
-    flex-direction: row;
-
-    position: absolute;
-    left: 15px;
-    top: 130px;
-
-    gap: 10px;
-}
-
-#effects{
-    display: flex;
-    flex-direction: row;
-
-    position: absolute;
-    left: 15px;
-    top: 190px;
-
-    gap: 10px;
-}
-
 .pres-button{
     height: 40px;
     width: 80px;
@@ -154,6 +151,25 @@ body{
     border-radius: 999px;
     outline: none;
     border: 1px solid rgba(0, 0, 0, 0.22);
+
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pres-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.pres-button.on {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.pres-button.on:hover {
+    background: rgba(255, 255, 255, 0.45);
 }
 
 #fan{
@@ -335,8 +351,8 @@ body{
     left: 15px;
     top: 15px;
 
-    width: 55px;
-    height: 55px;
+    width: 65px;
+    height: 65px;
 
     align-items: center;
     justify-content: center;
@@ -346,6 +362,8 @@ body{
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
+
+    transition: all 0.3s ease;
 }
 
 #light1:hover{
@@ -360,4 +378,26 @@ body{
 
 #light1.on:hover{
     background-color: rgba(255, 255, 255, 0.4);
+}
+
+#presets{
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    left: 15px;
+    top: 130px;
+
+    gap: 10px;
+}
+
+#effects{
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    left: 15px;
+    top: 190px;
+
+    gap: 10px;
 }

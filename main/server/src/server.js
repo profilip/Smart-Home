@@ -36,5 +36,27 @@ wss.on('connection', (ws) => {
             client.publish('home/fan/speed', speed);
             console.log('Published fan speed message to MQTT broker:', speed);
         }
+
+        if(message.toString().startsWith('led-color:')) {
+            const color = message.toString().split(':')[1];
+            client.publish('home/led/color', color);
+            console.log('Published led color message to MQTT broker:', color);
+        }
+
+        if(message.toString().startsWith('led-brightness:')) {
+            const brightness = message.toString().split(':')[1];
+            client.publish('home/led/brightness', brightness);
+            console.log('Published led brightness message to MQTT broker:', brightness);
+        }
+
+        if(message.toString() === 'toggle-light') {
+            client.publish('home/led/toggle', 'toggle');
+            console.log('Published toggle-light message to MQTT broker');
+        }
+        if(message.toString().startsWith('led-mode:')) {
+            const mode = message.toString().split(':')[1];
+            client.publish('home/led/mode', mode);
+            console.log('Published led mode message to MQTT broker:', mode);
+        }
     });
 });

@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "Smart Home Web",
+			"path": "../.."
+		},
+		{
+			"name": "Smartweb",
+			"path": "../../Smartweb"
+		},
+		{
+			"name": "esp-arduino-pio",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

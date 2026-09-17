@@ -3,6 +3,7 @@
 #include <Wire.h>
 #include <PubSubClient.h>
 #include <WiFi.h>
+#include <Adafruit_NeoPixel.h>
 
 // --- Instances ---
 Adafruit_BME280 bme;
@@ -14,10 +15,17 @@ float temp = 0;
 bool fanOn = false;
 bool autoMode = false;
 String fanSpeed = "0";
+String ledColor = "#ffd000";
+bool ledOn = false;
+int ledBrightness = 50;
 
 // --- Non-blocking Timer Variables ---
 unsigned long lastTempUpdate = 0;
 const unsigned long tempInterval = 2000; // Read BME280 every 2000ms (2 seconds)
+
+// --- NeoPixel Setup ---
+#define LED_PIN 5
+#define LED_COUNT 60
 
 // --- Configurations ---
 #define WIFI_SSID "ASUS"
@@ -34,6 +42,34 @@ const unsigned long tempInterval = 2000; // Read BME280 every 2000ms (2 seconds)
 #define LOG_INFO(msg)  Serial.print(CLR_GREEN);  Serial.print("[INFO] ");    Serial.print(msg); Serial.println(CLR_RESET)
 #define LOG_WARN(msg)  Serial.print(CLR_YELLOW); Serial.print("[WARNING] "); Serial.print(msg); Serial.println(CLR_RESET)
 #define LOG_ERROR(msg) Serial.print(CLR_RED);    Serial.print("[ERROR] ");   Serial.print(msg); Serial.println(CLR_RESET)
+
+Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// --- Parse Color Function ---
+uint32_t parseHexColor(String hexString) {
+  // Check if it starts with '#' and remove it
+  if (hexString.startsWith("#")) {
+    hexString = hexString.substring(1); 
+  }
+  
+  // Convert the remaining string to a base-16 (hex) number
+  return strtoul(hexString.c_str(), NULL, 16);
+}
+
+// --- Update LEDs Function ---
+void updateLEDs() {
+  if (ledOn) {
+    int b = map(ledBrightness, 0, 100, 0, 255);
+    strip.setBrightness(b > 0 ? b : 50);
+    uint32_t color = parseHexColor(ledColor.length() > 0 ? ledColor : "#ffd000");
+    for (int i = 0; i < LED_COUNT; i++) {
+      strip.setPixelColor(i, color);
+    }
+  } else {
+    strip.clear();
+  }
+  strip.show();
+}
 
 // --- MQTT Callback Function ---
 void mqtt_callback(char* topic, byte* payload, unsigned int length)
@@ -78,6 +114,35 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length)
         Serial.println(fanSpeed);
         Serial.print(CLR_RESET);
     }
+    else if (strcmp(topic, "home/led/color") == 0)
+    {
+        ledColor = message;
+
+        Serial.print(CLR_GREEN);
+        Serial.print("[LED] Color Recieved: ");
+        Serial.println(ledColor);
+        Serial.print(CLR_RESET);
+        if (ledOn) updateLEDs();
+    }
+    else if (strcmp(topic, "home/led/brightness") == 0)
+    {
+        ledBrightness = message.toInt();
+
+        Serial.print(CLR_GREEN);
+        Serial.print("[LED] Brightness Recieved: ");
+        Serial.println(ledBrightness);
+        Serial.print(CLR_RESET);
+        if (ledOn) updateLEDs();
+    }
+    else if (strcmp(topic, "home/led/toggle") == 0)
+    {
+        if (message == "toggle")
+        {
+            ledOn = !ledOn;
+            LOG_INFO("[LED] Toggled");
+            updateLEDs();
+        }
+    }
 }
 
 // --- MQTT Reconnect Function ---
@@ -94,6 +159,10 @@ void mqtt_reconnect()
             client.subscribe("home/fan");
             client.subscribe("home/fan/auto");
             client.subscribe("home/fan/speed");
+            client.subscribe("home/led/color");
+            client.subscribe("home/led/brightness");
+            client.subscribe("home/led/toggle");
+            client.subscribe("home/led/mode");
         }
         else
         {
@@ -215,6 +284,10 @@ void setup()
         client.subscribe("home/fan");
         client.subscribe("home/fan/auto");
         client.subscribe("home/fan/speed");
+        client.subscribe("home/led/color");
+        client.subscribe("home/led/brightness");
+        client.subscribe("home/led/toggle");
+        client.subscribe("home/led/mode");
     }
     else
     {
@@ -222,6 +295,12 @@ void setup()
     }
 
     LOG_INFO("[MQTT] SUCCESS");
+
+    LOG_INFO("[NEOPIXEL] INIT");
+    strip.begin();
+    strip.setBrightness(128);
+    strip.clear();
+    strip.show();
 }
 
 // --- Main Loop ---
