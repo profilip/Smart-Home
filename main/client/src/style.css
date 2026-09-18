@@ -401,3 +401,78 @@ body{
 
     gap: 10px;
 }
+
+#rollerblind {
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+    height: 150px;
+    width: 400px;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+    margin-left: 12px;
+}
+
+/* Remove default browser backgrounds, borders, and margins from arrows */
+#rollerblind-down,
+#rollerblind-up {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer;
+    outline: none;
+    
+    /* Make arrows smaller so two fit inside the 65px circle container */
+    width: 24px;  
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the image scales neatly to the button bounds */
+#rollerblind-image-up,
+#rollerblind-image-down {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* The single circular wrapper box containing both arrows */
+#rollerblind-arrow-box {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 65px;
+    height: 65px;
+
+    /* Changed to column layout to keep up over down */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    gap: 4px; /* Tiny space between the two arrows */
+
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+/* Hover state for the glassmorphism box container */
+#rollerblind-arrow-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#rollerblind-arrow-box.pressed {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: white;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}

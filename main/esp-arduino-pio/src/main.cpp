@@ -16,8 +16,10 @@ bool fanOn = false;
 bool autoMode = false;
 String fanSpeed = "0";
 String ledColor = "#ffd000";
+String rollerblindCommand = "stop";
 bool ledOn = false;
 int ledBrightness = 50;
+int motor-dir = HIGH;
 
 // --- Non-blocking Timer Variables ---
 unsigned long lastTempUpdate = 0;
@@ -26,6 +28,10 @@ const unsigned long tempInterval = 2000; // Read BME280 every 2000ms (2 seconds)
 // --- NeoPixel Setup ---
 #define LED_PIN 5
 #define LED_COUNT 60
+
+// --- Nema 17 Setup ---
+#define DIR_PIN 2
+#define STEP_PIN 3
 
 // --- Configurations ---
 #define WIFI_SSID "ASUS"
@@ -143,6 +149,37 @@ void mqtt_callback(char* topic, byte* payload, unsigned int length)
             updateLEDs();
         }
     }
+    else if (strcmp(topic, "home/led/mode") == 0)
+    {
+        Serial.print(CLR_GREEN);
+        Serial.print("[LED] Mode Received: ");
+        Serial.println(message);
+        Serial.print(CLR_RESET);
+    }
+    else if (strcmp(topic, "home/rollerblind") == 0)
+    {
+        Serial.print(CLR_GREEN);
+        Serial.print("[ROLLERBLIND] Command Received: ");
+        Serial.println(message);
+        if(message == "up")
+        {
+            rollerblindCommand = "up";
+        }
+        else if (message == "down")
+        {
+            rollerblindCommand = "down";
+        }
+        else if (message == "stop")
+        {
+            rollerblindCommand = "stop";
+        }
+        else
+        {
+            rollerblindCommand = "stop";
+            LOG_WARN("[ROLLERBLIND] Invalid Command Received, Defaulting to 'stop'");
+        }
+        Serial.print(CLR_RESET);
+    }
 }
 
 // --- MQTT Reconnect Function ---
@@ -163,6 +200,7 @@ void mqtt_reconnect()
             client.subscribe("home/led/brightness");
             client.subscribe("home/led/toggle");
             client.subscribe("home/led/mode");
+            client.subscribe("home/rollerblind");
         }
         else
         {
@@ -212,6 +250,8 @@ void setup()
     LOG_INFO("[PINMODE] INIT");
 
     pinMode(6, OUTPUT);
+    pinMode(DIR_PIN, OUTPUT);
+    pinMode(STEP_PIN, OUTPUT);
 
     LOG_INFO("[PINMODE] SUCCESS");
 
@@ -288,6 +328,7 @@ void setup()
         client.subscribe("home/led/brightness");
         client.subscribe("home/led/toggle");
         client.subscribe("home/led/mode");
+        client.subscribe("home/rollerblind");
     }
     else
     {
@@ -365,6 +406,19 @@ void loop()
     else
     {
         analogWrite(6, 0);
+    }
+
+    if(rollerblindCommand == "up")
+    {
+        // motor go up
+    }
+    else if(rollerblindCommand == "down")
+    {
+        // motor go down
+    }
+    else if(rollerblindCommand == "stop")
+    {
+        // motor stop
     }
 }
 

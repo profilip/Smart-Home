@@ -22,7 +22,7 @@ client.on('message', (topic, message) => {
 
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-        console.log('Received message from client:', message);
+        console.log('Received message from client:', message.toString());
         if(message.toString() === 'toggle') {
             client.publish('home/fan', 'toggle');
             console.log('Published toggle message to MQTT broker');
@@ -53,10 +53,21 @@ wss.on('connection', (ws) => {
             client.publish('home/led/toggle', 'toggle');
             console.log('Published toggle-light message to MQTT broker');
         }
+
         if(message.toString().startsWith('led-mode:')) {
             const mode = message.toString().split(':')[1];
             client.publish('home/led/mode', mode);
             console.log('Published led mode message to MQTT broker:', mode);
+        }
+        
+        if(message.toString() === 'rollerblind-up') {
+            client.publish('home/rollerblind', 'up');
+            console.log('Published rollerblind-up message to MQTT broker');
+        }
+
+        if(message.toString() === 'rollerblind-down') {
+            client.publish('home/rollerblind', 'down');
+            console.log('Published rollerblind-down message to MQTT broker');
         }
     });
 });
