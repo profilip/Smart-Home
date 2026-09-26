@@ -463,6 +463,8 @@ body{
     border-radius: 50%;
     box-sizing: border-box;
     transition: 0.5s;
+
+    user-select: none; /* Prevent text selection on double click */
 }
 
 /* Hover state for the glassmorphism box container */
