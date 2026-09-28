@@ -472,4 +472,3 @@ void loop()
     // 6. Update LED Effects
     strip.service();
 }
-
